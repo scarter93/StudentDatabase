@@ -5,7 +5,7 @@ Student records and student records database written in C++.
 
 Holds information on a student, name, ID, and classes.
 
-Would be interesting to add a grades option to with GPA/Average.
+Would be interesting to add a grades option with GPA/Average. Maybe add a year level and split classes into complete/uncomplete etc...
 
 ##StudentRecordDatabase Class
 
