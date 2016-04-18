@@ -30,6 +30,13 @@ StudentRecord::StudentRecord(int ID)
 	this->ID = ID;
 }
 
+StudentRecord::StudentRecord()
+{
+	this->ID = NULL;
+	this->name = "";
+	//this->classes = NULL;
+}
+
 string StudentRecord::getName()
 {
 	return this->name;

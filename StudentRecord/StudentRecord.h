@@ -13,6 +13,7 @@ public:
 	StudentRecord(string name, int ID);
 	StudentRecord(string name);
 	StudentRecord(int ID);
+	StudentRecord();
 
 	string getName();
 	void setName(string name);

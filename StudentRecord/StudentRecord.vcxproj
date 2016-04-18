@@ -146,7 +146,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="StudentRecordcpp.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="StudentRecord.cpp" />
+    <ClCompile Include="StudentRecordDatabase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StudentRecord.h" />
+    <ClInclude Include="StudentRecordDatabase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
