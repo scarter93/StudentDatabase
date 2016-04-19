@@ -15,4 +15,16 @@ void main() {
 
 	StudentRecordDatabase database(students);
 	database.printDatabase();
+	
+	StudentRecord& updateStudent = database.getStudentRecord(billy.getID());
+	updateStudent.addClass("Math102");
+	cout << database.getStudentRecord(billy.getID()).getClasses()[2] << endl;
+
+	billy = updateStudent;
+	cout << billy.containsClass("Math102") << endl;
+	if (updateStudent.inClassWith(bob))
+	{
+		cout << "Billy and Bob are in a class together" << endl;
+	}
+	
 }

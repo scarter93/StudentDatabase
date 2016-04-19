@@ -1,17 +1,17 @@
 #include "StudentRecordDatabase.h"
 
-StudentRecordDatabase::StudentRecordDatabase(vector<StudentRecord> entries)
+StudentRecordDatabase::StudentRecordDatabase(vector<StudentRecord> &entries)
 {
 	if (entries.size() > 0) {
 		numStudents = entries.size();
 		for (int i = 0; i < entries.size(); i++) {
 			hashTable[entries[i].getID()] = entries[i];
-			cout << hashTable[entries[i].getID()].getName() << endl;
+			//cout << hashTable[entries[i].getID()].getName() << endl;
 		}
 	}
 }
 
-StudentRecordDatabase::StudentRecordDatabase(StudentRecord entry)
+StudentRecordDatabase::StudentRecordDatabase(StudentRecord &entry)
 {
 	if (entry.getID() >= 0 && entry.getName() != "") {
 		numStudents = 1;
@@ -24,7 +24,11 @@ StudentRecordDatabase::StudentRecordDatabase()
 	numStudents = 0;
 }
 
-bool StudentRecordDatabase::addStudent(StudentRecord entry)
+StudentRecordDatabase::~StudentRecordDatabase()
+{
+}
+
+bool StudentRecordDatabase::addStudent(StudentRecord &entry)
 {
 	if (hashTable.find(entry.getID()) == hashTable.end()) {
 		hashTable[entry.getID()] = entry;
@@ -42,6 +46,14 @@ bool StudentRecordDatabase::removeStudent(StudentRecord entry)
 	return false;
 }
 
+StudentRecord &StudentRecordDatabase::getStudentRecord(int ID)
+{
+	if (hashTable.find(ID) != hashTable.end() && numStudents > 0) {
+		return hashTable[ID];
+	}
+	//return StudentRecord();
+}
+
 void StudentRecordDatabase::printDatabase()
 {	
 	cout << "Name\t|\tID" << endl;
@@ -56,18 +68,34 @@ void StudentRecordDatabase::printDatabase()
 	
 }
 
-bool StudentRecordDatabase::updateClasses(StudentRecord student, vector<string> classes)
+bool StudentRecordDatabase::updateClasses(int ID, vector<string> classes)
 {
-
+	if (hashTable.find(ID) != hashTable.end() && numStudents > 0) {
+		StudentRecord &update = hashTable[ID];
+		for (int i = 0; i < classes.size(); i++) {
+			update.addClass(classes[i]);
+		}
+		return true;
+	}
 	return false;
 }
 
-bool StudentRecordDatabase::updateClasses(StudentRecord student, string classIn)
+bool StudentRecordDatabase::updateClasses(int ID, string classIn)
 {
+	if (hashTable.find(ID) != hashTable.end() && numStudents > 0) {
+		StudentRecord &update = hashTable[ID];
+		update.addClass(classIn);
+		return true;
+	}
 	return false;
 }
 
-bool StudentRecordDatabase::removeClasses(StudentRecord student, string classIn)
+bool StudentRecordDatabase::removeClass(int ID, string classIn)
 {
+	if (hashTable.find(ID) != hashTable.end() && numStudents > 0) {
+		StudentRecord &update = hashTable[ID];
+		update.removeClass(classIn);
+		return true;
+	}
 	return false;
 }

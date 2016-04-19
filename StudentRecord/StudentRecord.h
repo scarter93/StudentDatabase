@@ -14,14 +14,18 @@ public:
 	StudentRecord(string name);
 	StudentRecord(int ID);
 	StudentRecord();
-
+	~StudentRecord();
 	string getName();
 	void setName(string name);
 
 	vector<string> getClasses();
 	void addClass(string classIn);
+	void removeClass(string classIn);
 	void setClasses(vector<string> classes);
 	bool containsClass(string classIn);
+	bool inClassWith(StudentRecord classmate);
+	string StudentRecord::sharedClass(StudentRecord classmate);
+	vector<string> StudentRecord::sharedClasses(StudentRecord classmate);
 
 	int getID();
 	void setID(int ID);

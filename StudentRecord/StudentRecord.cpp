@@ -37,6 +37,10 @@ StudentRecord::StudentRecord()
 	//this->classes = NULL;
 }
 
+StudentRecord::~StudentRecord()
+{
+}
+
 string StudentRecord::getName()
 {
 	return this->name;
@@ -62,8 +66,18 @@ vector<string> StudentRecord::getClasses() {
 
 void StudentRecord::addClass(string classIn)
 {
-	if(find(classes.begin(),classes.end(),classIn) == classes.end())
+	if (find(classes.begin(), classes.end(), classIn) == classes.end()) {
 		this->classes.push_back(classIn);
+	}
+}
+
+void StudentRecord::removeClass(string classIn)
+{
+	for (int i = 0; i < classes.size(); i++) {
+		if (classes[i] == classIn) {
+			classes.erase[classes.begin() + i];
+		}
+	}
 }
 
 void StudentRecord::setClasses(vector<string> classes)
@@ -77,4 +91,32 @@ bool StudentRecord::containsClass(string classIn)
 		return true;
 	}
 	return false;
+}
+
+bool StudentRecord::inClassWith(StudentRecord classmate)
+{
+	for (int i = 0; i < this->classes.size(); i++) {
+		if (classmate.containsClass(classes[i])) {
+			return true;
+		}
+	}
+	return false;
+}
+string StudentRecord::sharedClass(StudentRecord classmate) {
+	for (int i = 0; i < this->classes.size(); i++) {
+		if (classmate.containsClass(classes[i])) {
+			return classes[i];
+		}
+	}
+	return "";
+}
+
+vector<string> StudentRecord::sharedClasses(StudentRecord classmate) {
+	vector<string> matchedClasses;
+	for (int i = 0; i < this->classes.size(); i++) {
+		if (classmate.containsClass(classes[i])) {
+			matchedClasses.push_back(classes[i]);
+		}
+	}
+	return matchedClasses;
 }
