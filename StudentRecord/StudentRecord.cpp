@@ -75,7 +75,7 @@ void StudentRecord::removeClass(string classIn)
 {
 	for (int i = 0; i < classes.size(); i++) {
 		if (classes[i] == classIn) {
-			classes.erase[classes.begin() + i];
+			classes.erase(classes.begin() + i);
 		}
 	}
 }

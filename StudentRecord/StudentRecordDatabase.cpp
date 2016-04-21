@@ -5,7 +5,9 @@ StudentRecordDatabase::StudentRecordDatabase(vector<StudentRecord> &entries)
 	if (entries.size() > 0) {
 		numStudents = entries.size();
 		for (int i = 0; i < entries.size(); i++) {
-			hashTable[entries[i].getID()] = entries[i];
+			hashTable.insert({ entries[i].getID(), entries[i] });
+			//hashTable.insert()
+			//hashTable[entries[i].getID()] = entries[i];
 			//cout << hashTable[entries[i].getID()].getName() << endl;
 		}
 	}
@@ -68,34 +70,34 @@ void StudentRecordDatabase::printDatabase()
 	
 }
 
-bool StudentRecordDatabase::updateClasses(int ID, vector<string> classes)
+StudentRecord* StudentRecordDatabase::updateClasses(int ID, vector<string> classes)
 {
 	if (hashTable.find(ID) != hashTable.end() && numStudents > 0) {
-		StudentRecord &update = hashTable[ID];
+		StudentRecord *update = &hashTable[ID];
 		for (int i = 0; i < classes.size(); i++) {
-			update.addClass(classes[i]);
+			update->addClass(classes[i]);
 		}
-		return true;
+		return update;
 	}
-	return false;
+	return NULL;
 }
 
-bool StudentRecordDatabase::updateClasses(int ID, string classIn)
+StudentRecord* StudentRecordDatabase::updateClasses(int ID, string classIn)
 {
 	if (hashTable.find(ID) != hashTable.end() && numStudents > 0) {
-		StudentRecord &update = hashTable[ID];
-		update.addClass(classIn);
-		return true;
+		StudentRecord *update = &hashTable[ID];
+		update->addClass(classIn);
+		return update;
 	}
-	return false;
+	return NULL;
 }
 
-bool StudentRecordDatabase::removeClass(int ID, string classIn)
+StudentRecord* StudentRecordDatabase::removeClass(int ID, string classIn)
 {
 	if (hashTable.find(ID) != hashTable.end() && numStudents > 0) {
-		StudentRecord &update = hashTable[ID];
-		update.removeClass(classIn);
-		return true;
+		StudentRecord *update = &hashTable[ID];
+		update->removeClass(classIn);
+		return update;
 	}
-	return false;
+	return NULL;
 }

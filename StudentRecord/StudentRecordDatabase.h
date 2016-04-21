@@ -19,9 +19,9 @@ public:
 
 	void printDatabase();
 
-	bool updateClasses(int ID, vector<string> classes);
-	bool updateClasses(int ID, string classIn);
-	bool removeClass(int ID, string classIn);
+	StudentRecord* updateClasses(int ID, vector<string> classes);
+	StudentRecord* updateClasses(int ID, string classIn);
+	StudentRecord* removeClass(int ID, string classIn);
 private:
 	int numStudents;
 	unordered_map<int, StudentRecord> hashTable;
