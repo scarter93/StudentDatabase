@@ -1,5 +1,5 @@
-# StudentDatabase
-Student records and student records database written in C++.
+# StudentRecordTracker
+Student records and student records tracker written in C++.
 
 ## StudentRecord Class
 
@@ -17,9 +17,6 @@ This might need some cleaning up, I'm not sure if I want to keep this hash or if
 
 ##TODO
 
-Finsih up StudentRecordDatabase Class and add more detail to StudentRecord Class.
+Finsih up StudentRecordDatabase Class and add persitance layer and more detail to StudentRecord Class.
 Add comments, expections and deconstructors.
 
-##Usage
-
-Coming soon
